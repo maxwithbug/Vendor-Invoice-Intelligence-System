@@ -9,7 +9,6 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
-develop-eggs/
 dist/
 downloads/
 eggs/
@@ -41,17 +40,34 @@ env/
 # macOS files
 .DS_Store
 
-# SQLite / database files
+# Data files and databases (generated or local data)
+data/*.db
+data/*.sqlite
+data/*.sqlite3
 *.db
 *.sqlite
 *.sqlite3
 
+# Machine learning artifacts
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+notebooks/freight_cost_prediction/models/
+
+# Notebook outputs and checkpoints
+*.ipynb_checkpoints
+
+# Logs and temporary files
+*.log
+*.csv
+
 # Python test cache
 .pytest_cache/
 
-# Logs
-*.log
+# OS files
+Thumbs.db
 
-# Model artifacts (optional)
-models/*.pkl
-models/*.joblib
+# Optional: keep only source data and notebooks
+# Remove this line if you want to track your project CSV files explicitly
