@@ -1,48 +1,155 @@
-# Freight Cost Prediction
+# 📦 Vendor Invoice Intelligence
 
-This repository contains a freight cost prediction project built with Python and scikit-learn. The project uses vendor invoice data from an SQLite database to train a model that predicts freight cost based on invoice values.
+![Banner](images/img1.png)
 
-## Project Structure
+> AI-powered platform for **Freight Cost Prediction** and **Invoice Risk Flagging** — built with Python, scikit-learn, and Streamlit.
 
-- `Copy of sonar data.csv` - sample dataset file stored at the root
-- `data/` - local data storage
-  - `inventory.db` - SQLite database used by the project
-- `notebooks/` - Jupyter notebooks and project code
-  - `Predicting Freight Cost.ipynb` - notebook for analysis and modeling
-  - `Untitled.ipynb` - extra notebook
-  - `freight_cost_prediction/` - Python modules for the prediction workflow
-    - `data_preprocessing.py` - data loading, feature selection, and train/test split
-    - `train.py` - training script for the prediction model
-    - `modeling_evaluation.py` - evaluation helper functions
-    - `models/` - saved model artifacts (ignored by git)
+---
 
-## Setup
+## 🚀 Live Demo
 
-1. Create a virtual environment:
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🎯 Problem Statement
+
+Manual invoice review is slow, error-prone, and expensive. This project automates two critical workflows:
+
+- 🚛 **Freight Cost Prediction** — predict shipping costs from invoice value
+- 🚨 **Invoice Risk Flagging** — detect abnormal invoices that need manual approval
+
+---
+
+## 🏗️ Project Structure
+minor_project_6/
+
+├── app.py                          # Streamlit web app
+
+├── data/
+
+│   └── inventory.db                # SQLite database
+
+├── inferencing/
+
+│   ├── predict_freight.py          # Freight cost inference
+
+│   └── predict_invoice_flag.py     # Invoice flag inference
+
+├── invoice_flagging/
+
+│   ├── data_preprocessing.py       # Data loading & labeling
+
+│   ├── modeling_evaluation.py      # Model training & evaluation
+
+│   └── train.py                    # Training entry point
+
+├── notebooks/
+
+│   ├── Predicting Freight Cost.ipynb
+
+│   ├── invoice flagging.ipynb
+
+│   └── freight_cost_prediction/    # Modular freight pipeline
+
+├── models/                         # Saved model artifacts (.pkl)
+
+└── images/                         # Screenshots & assets
+
+---
+
+## 🧠 ML Models
+
+### 🚛 Freight Cost Prediction
+
+| Model | Features | Metric |
+|---|---|---|
+| Linear Regression | `Dollars` | MAE, RMSE, R² |
+
+### 📋 Invoice Risk Flagging
+
+| Model | Features | Metric |
+|---|---|---|
+| Random Forest (Tuned) | `invoice_dollars`, `total_item_dollars`, `Freight`, `avg_receiving_delay`, ... | F1 Score |
+
+**Labeling Logic:**
+
+- Invoice vs purchase dollar mismatch > $5 → 🚨 Flagged
+- Average receiving delay > 10 days → 🚨 Flagged
+
+---
+
+## ⚙️ Setup
+
+**1. Clone the repo**
+
+```bash
+git clone https://github.com/your-username/minor_project_6.git
+cd minor_project_6
+```
+
+**2. Create virtual environment**
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-2. Install dependencies:
+**3. Install dependencies**
 
 ```bash
-pip install pandas scikit-learn jupyter
+pip install pandas scikit-learn streamlit plotly joblib jupyter
 ```
 
-## Usage
-
-Run the training script from the project folder:
+**4. Train the models**
 
 ```bash
-cd notebooks/freight_cost_prediction
+# Freight model — run notebook
+jupyter notebook notebooks/Predicting\ Freight\ Cost.ipynb
+
+# Invoice flagging model
+cd invoice_flagging
 python train.py
 ```
 
-Or open the notebook in `notebooks/Predicting Freight Cost.ipynb` to explore the data and model results.
+**5. Run the app**
 
-## Notes
+```bash
+streamlit run app.py
+```
 
-- `data/*.db` and model artifacts are excluded from version control via `.gitignore`.
-- Keep source data and notebooks tracked, but avoid committing generated files and environment artifacts.
+---
+
+## 📊 App Screenshots
+
+![Freight Cost Prediction](images/img2.png)
+
+![Invoice Risk Flagging](images/img3.png)
+
+---
+
+## 🗄️ Database Schema
+
+Data sourced from `inventory.db` (SQLite):
+
+- `vendor_invoice` — invoice records (quantity, dollars, freight, dates)
+- `purchases` — purchase order records (brand, quantity, dollars, receiving dates)
+
+---
+
+## 📌 Notes
+
+- `models/*.pkl` and `data/*.db` are excluded from version control via `.gitignore`
+- All paths are resolved relative to file location using `pathlib.Path`
+
+---
+
+## 👤 Author
+
+**Pranab** — B.Tech CSE | Minor Project 6
+
+---
+
+> ⭐ Star this repo if you found it useful!
