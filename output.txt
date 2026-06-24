@@ -1,0 +1,67 @@
+��python : Traceback (most 
+recent call last):
+At line:1 char:1
++ python inference/predict_in
+voice_flag.py > output.txt 
+2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo           
+   : NotSpecified: (Traceba  
+  ck (most recent call las   
+ t)::String) [], RemoteEx    
+ception
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+  File "C:\Users\Manish\Downl
+oads\Invoice_ML_project\infer
+ence\predict_invoice_flag.py"
+, line 40, in <module>
+    predictions = predict_inv
+oice_flag(sample_data)
+  File "C:\Users\Manish\Downl
+oads\Invoice_ML_project\infer
+ence\predict_invoice_flag.py"
+, line 29, in 
+predict_invoice_flag
+    input_df["flag_invoice"] 
+= model.predict(input_df)
+                             
+  ~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Manish\AppDa
+ta\Roaming\Python\Python314\s
+ite-packages\sklearn\pipeline
+.py", line 745, in predict
+    Xt = 
+transform.transform(Xt)
+  File "C:\Users\Manish\AppDa
+ta\Roaming\Python\Python314\s
+ite-packages\sklearn\utils\_s
+et_output.py", line 316, in 
+wrapped
+    data_to_wrap = f(self, 
+X, *args, **kwargs)
+  File "C:\Users\Manish\AppDa
+ta\Roaming\Python\Python314\s
+ite-packages\sklearn\impute\_
+base.py", line 611, in 
+transform
+    X = 
+self._validate_input(X, 
+in_fit=False)
+  File "C:\Users\Manish\AppDa
+ta\Roaming\Python\Python314\s
+ite-packages\sklearn\impute\_
+base.py", line 425, in 
+_validate_input
+    raise ValueError(err_msg)
+ValueError: The dtype of the 
+filling value (i.e. 
+dtype('float64')) cannot be 
+cast to the input data that 
+is dtype('int64'). Make sure 
+that the dtypes of the input 
+data are of the same kind 
+between fit and transform.
